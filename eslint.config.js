@@ -2,6 +2,7 @@ import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import d3Plugin from 'eslint-plugin-d3';
 import prettierPlugin from 'eslint-plugin-prettier';
+import importPlugin from 'eslint-plugin-import';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -14,10 +15,10 @@ export default [
     plugins: {
       d3: d3Plugin,
       prettier: prettierPlugin,
+      import: importPlugin,
     },
     rules: {
-      'no-console': 'warn',
-      'no-debugger': 'warn',
+      ...importPlugin.configs.recommended.rules,
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
@@ -31,6 +32,14 @@ export default [
           endOfLine: 'auto',
         },
       ],
+
+      'import/no-unresolved': 'error',
+      'import/no-duplicates': 'error',
+
+      'no-console': 'warn',
+      'no-debugger': 'error',
+      'no-var': 'error',
+      'prefer-const': 'error',
     },
   },
 
