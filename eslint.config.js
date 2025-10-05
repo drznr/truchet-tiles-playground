@@ -41,6 +41,13 @@ export default [
       'no-var': 'error',
       'prefer-const': 'error',
     },
+    settings: {
+      'import/resolver': {
+        node: {
+          extensions: ['.js', '.ts'],
+        },
+      },
+    },
   },
 
   {
