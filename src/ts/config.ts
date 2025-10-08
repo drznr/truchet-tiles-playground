@@ -7,6 +7,7 @@ type ChartConfig = {
   colors: {
     fill: string;
     stroke: string;
+    background: string;
   };
 };
 
@@ -14,7 +15,7 @@ const DEFAULT_CONFIG = {
   tileSize: 40,
   tileType: TileType.Triangle,
   layoutAlgorithm: TileLayoutAlgorithm.None,
-  colors: { fill: '#333', stroke: '#e2e2e2' },
+  colors: { fill: '#333', stroke: '#e2e2e2', background: '#fff' },
 } as const satisfies ChartConfig;
 
 export const chartConfig: ChartConfig = DEFAULT_CONFIG;

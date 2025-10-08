@@ -21,7 +21,8 @@ export function update(width: number, height: number) {
     .attr('viewBox', `0 0 ${w} ${h}`)
     .attr('width', '100%')
     .attr('height', '100%')
-    .style('display', 'block');
+    .style('display', 'block')
+    .style('background-color', chartConfig.colors.background);
 
   const tiles = svg
     .selectAll('g.tile')
