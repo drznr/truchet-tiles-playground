@@ -1,4 +1,4 @@
-import { chartConfig } from '../config';
+import { chartConfig } from './config';
 
 export function layout(w: number, h: number) {
   const { tileSize } = chartConfig;
