@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + TS</title>
+    <script type="module" crossorigin src="/assets/index-BHGBbPf1.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DIoJjjVg.css">
+  </head>
+  <body>
+    <header class="main-header">
+      <fieldset class="tile-type-selector">
+        <label>
+          <input type="radio" name="tile-type" value="TRIANGLE" checked />
+          Triangle
+        </label>
+        <label>
+          <input type="radio" name="tile-type" value="QUARTER_CIRCLE" />
+          Quadratic Circles
+        </label>
+        <label>
+          <input type="radio" name="tile-type" value="S_CURVE" />
+          S-Curve
+        </label>
+        <label>
+          <input type="radio" name="tile-type" value="DIAGONAL" />
+          Diagonal
+        </label>
+      </fieldset>
+
+      |
+
+      <fieldset class="layout-algorythm-selector">
+        <label>
+          <input type="radio" name="layout-algorythm" value="NONE" checked />
+          None
+        </label>
+        <label>
+          <input type="radio" name="layout-algorythm" value="RANDOM" />
+          Random
+        </label>
+        <label>
+          <input type="radio" name="layout-algorythm" value="QUAD_ROTATION" />
+          Quad-rotation
+        </label>
+        <label>
+          <input type="radio" name="layout-algorythm" value="WAVE" />
+          Wave
+        </label>
+        <label>
+          <input type="radio" name="layout-algorythm" value="QUAD_REFLECTION" />
+          Quad-reflection
+        </label>
+      </fieldset>
+
+      |
+
+      <fieldset class="tile-size-selector">
+        <label>
+          <input type="radio" name="tile-size" value="20" />
+          Small
+        </label>
+
+        <label>
+          <input type="radio" name="tile-size" value="40" checked />
+          Medium
+        </label>
+
+        <label>
+          <input type="radio" name="tile-size" value="80" />
+          Big
+        </label>
+      </fieldset>
+
+      |
+
+      <fieldset class="colors-selector">
+        <label>
+          <input type="color" name="fill" value="#333333" />
+          Fill
+        </label>
+        <label>
+          <input type="color" name="stroke" value="#333333" />
+          Stroke
+        </label>
+        <label>
+          <input type="color" name="background" value="#ffffff" />
+          Background
+        </label>
+      </fieldset>
+    </header>
+
+    <section class="chart-container"></section>
+  </body>
+</html>
