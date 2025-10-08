@@ -32,7 +32,10 @@ export function applyLayoutAlgorithm(
 ): void {
   const { layoutAlgorithm } = chartConfig;
 
-  const orientations = Object.values(TileOrientation) as TileOrientation[];
+  const centerX = w / 2;
+  const centerY = h / 2;
+
+  const orientations = Object.values(TileOrientation);
 
   if (layoutAlgorithm === TileLayoutAlgorithm.Random) {
     layoutData.forEach((d) => {
@@ -42,9 +45,6 @@ export function applyLayoutAlgorithm(
   }
 
   if (layoutAlgorithm === TileLayoutAlgorithm.Radial) {
-    const centerX = w / 2;
-    const centerY = h / 2;
-
     layoutData.forEach((d) => {
       const dx = d.x + d.w / 2 - centerX;
       const dy = d.y + d.h / 2 - centerY;
@@ -66,6 +66,21 @@ export function applyLayoutAlgorithm(
         Math.floor(((wave + 2) / 4) * orientations.length) %
         orientations.length;
       d.orientation = orientations[index];
+    });
+  }
+
+  if (layoutAlgorithm === TileLayoutAlgorithm.Spiral) {
+    layoutData.forEach((d) => {
+      const dx = d.x + d.w / 2 - centerX;
+      const dy = d.y + d.h / 2 - centerY;
+      const angle = Math.atan2(dy, dx);
+      const orientations = Object.values(TileOrientation);
+
+      const quadrant =
+        Math.floor(((angle + Math.PI) / (2 * Math.PI)) * 4) %
+        orientations.length;
+
+      d.orientation = orientations[quadrant];
     });
   }
 }

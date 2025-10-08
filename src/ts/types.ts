@@ -16,4 +16,5 @@ export enum TileLayoutAlgorithm {
   Random = 'RANDOM',
   Radial = 'RADIAL',
   Wave = 'WAVE',
+  Spiral = 'SPIRAL',
 }

@@ -45,7 +45,7 @@ export function update(w: number, h: number) {
   });
 
   tiles.on('click', function (_, d) {
-    const orientations = Object.values(TileOrientation) as TileOrientation[];
+    const orientations = Object.values(TileOrientation);
     const currentIndex = orientations.indexOf(d.orientation);
     const nextIndex = (currentIndex + 1) % orientations.length;
     d.orientation = orientations[nextIndex];
