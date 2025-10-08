@@ -1,4 +1,7 @@
 import { chartConfig } from './config';
+import { TileOrientation } from './types';
+
+export type LayoutDatum = ReturnType<typeof layout>[number];
 
 export function layout(w: number, h: number) {
   const { tileSize } = chartConfig;
@@ -17,6 +20,7 @@ export function layout(w: number, h: number) {
       h: cellHeight,
       x: col * cellWidth,
       y: row * cellHeight,
+      orientation: TileOrientation.TopLeft,
     };
   });
 }

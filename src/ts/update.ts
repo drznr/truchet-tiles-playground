@@ -1,5 +1,7 @@
 import * as d3 from 'd3';
 import { layout } from './layout';
+import { drawTile } from './tiles';
+import { TileType } from './types';
 
 export function update(w: number, h: number) {
   const layoutData = layout(w, h);
@@ -24,15 +26,7 @@ export function update(w: number, h: number) {
     .selectAll('path')
     .data((d) => [d])
     .join('path')
-    .attr('d', (d) => {
-      const { w, h } = d;
-      const r = Math.min(w, h) / 2;
-
-      return `
-        M${r},0 A${r},${r} 0 0,1 ${w},${r}
-        M0,${r} A${r},${r} 0 0,1 ${r},${h}
-      `;
-    })
+    .attr('d', (d) => drawTile(TileType.QuarterCircle, d))
     .attr('fill', 'none')
     .attr('stroke', '#333')
     .attr('stroke-width', 2)
