@@ -14,6 +14,10 @@ export function drawTile(type: TileType, d: LayoutDatum): string {
     return drawSCurveTile(d);
   }
 
+  if (type === TileType.Diagonal) {
+    return drawDiagonalTile(d);
+  }
+
   throw new Error(`Unsupported tile type: ${type}`);
 }
 
@@ -81,6 +85,23 @@ function drawSCurveTile(d: LayoutDatum): string {
   }
 }
 
+function drawDiagonalTile(d: LayoutDatum): string {
+  const { w, h, orientation } = d;
+
+  switch (orientation) {
+    case TileOrientation.TopLeft:
+      return `M0,0 L${w},${h}`;
+    case TileOrientation.TopRight:
+      return `M${w},0 L0,${h}`;
+    case TileOrientation.BottomLeft:
+      return `M0,${h} L${w},0`;
+    case TileOrientation.BottomRight:
+      return `M${w},${h} L0,0`;
+    default:
+      throw new Error(`Unsupported orientation: ${orientation}`);
+  }
+}
+
 const TILE_DEFAULT_ATTRS = {
   fill: 'none',
   stroke: '#333',
@@ -94,5 +115,10 @@ export const TILES_ATTRS: Record<TileType, { [key: string]: string }> = {
   [TileType.Triangle]: {
     fill: '#333',
     stroke: 'none',
+  },
+  [TileType.Diagonal]: {
+    stroke: '#333',
+    'stroke-width': '1',
+    fill: 'transparent',
   },
 } as const;

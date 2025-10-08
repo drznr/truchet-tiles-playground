@@ -2,6 +2,7 @@ export enum TileType {
   QuarterCircle = 'QUARTER_CIRCLE',
   Triangle = 'TRIANGLE',
   SCurve = 'S_CURVE',
+  Diagonal = 'DIAGONAL',
 }
 
 export enum TileOrientation {
