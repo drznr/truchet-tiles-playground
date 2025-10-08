@@ -2,7 +2,10 @@
 
 A responsive and interactive tile-based chart built with **D3.js** and **TypeScript**, featuring multiple tile types and orientations.
 
----
+## Live Demo
+
+Try the interactive Truchet Tiles Playground here:  
+[🔗 View Live Demo](https://drznr.github.io/truchet-tiles-playground/)
 
 ## Features
 
@@ -23,8 +26,6 @@ A responsive and interactive tile-based chart built with **D3.js** and **TypeScr
   - Click tiles to rotate orientation.
   - Change tile type dynamically via radio buttons.
   - Change tiles and background colors
-
----
 
 ## Installation
 
