@@ -4,8 +4,10 @@ import { drawTile, TILES_ATTRS } from './tiles';
 import { chartConfig } from './config';
 import { TileOrientation } from './types';
 
-export function update(w: number, h: number) {
+export function update(width: number, height: number) {
   const { tileType } = chartConfig;
+  const w = Math.floor(width);
+  const h = Math.floor(height);
 
   const layoutData = layout(w, h);
 
@@ -17,8 +19,9 @@ export function update(w: number, h: number) {
     .data([null])
     .join('svg')
     .attr('viewBox', `0 0 ${w} ${h}`)
-    .attr('width', w)
-    .attr('height', h);
+    .attr('width', '100%')
+    .attr('height', '100%')
+    .style('display', 'block');
 
   const tiles = svg
     .selectAll('g.tile')
