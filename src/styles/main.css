@@ -1,3 +1,7 @@
+:root {
+  --main-header-height: 32px;
+}
+
 *,
 *::before,
 *::after {
@@ -10,6 +14,22 @@ body {
   height: 100%;
 }
 
+fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.main-header {
+  height: var(--main-header-height);
+  padding-inline: 4px;
+  display: flex;
+  align-items: center;
+}
+
 .chart-container {
-  height: 100%;
+  height: calc(100% - var(--main-header-height));
 }

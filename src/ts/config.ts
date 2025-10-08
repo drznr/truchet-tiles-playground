@@ -11,3 +11,10 @@ export const chartConfig: ChartConfig = {
   tileType: TileType.Triangle,
   layoutAlgorithm: TileLayoutAlgorithm.Radial,
 };
+
+export function setChartConfig<K extends keyof ChartConfig>(
+  key: K,
+  value: ChartConfig[K]
+) {
+  chartConfig[key] = value;
+}

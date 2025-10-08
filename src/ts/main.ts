@@ -1,3 +1,4 @@
+import { initControls } from './controls';
 import { update } from './update';
 import { debounce } from './utils';
 
@@ -10,6 +11,7 @@ const debouncedRender = debounce(render, 25);
 window.addEventListener('load', () => {
   const { width, height } = container.getBoundingClientRect();
   render(width, height);
+  initControls();
 });
 
 const resizeObserver = new ResizeObserver((entries) => {
@@ -20,7 +22,10 @@ const resizeObserver = new ResizeObserver((entries) => {
 
 resizeObserver.observe(container);
 
-function render(width: number, height: number) {
+export function render(
+  width = container.clientWidth,
+  height = container.clientHeight
+) {
   if (rafId) cancelAnimationFrame(rafId);
 
   rafId = requestAnimationFrame(() => update(width, height));

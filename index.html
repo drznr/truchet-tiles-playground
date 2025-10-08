@@ -8,6 +8,27 @@
     <title>Vite + TS</title>
   </head>
   <body>
+    <header class="main-header">
+      <fieldset class="tile-type-selector">
+        <label>
+          <input type="radio" name="tileType" value="TRIANGLE" checked />
+          Triangle
+        </label>
+        <label>
+          <input type="radio" name="tileType" value="QUARTER_CIRCLE" />
+          Quadratic Circles
+        </label>
+        <label>
+          <input type="radio" name="tileType" value="S_CURVE" />
+          S-Curve
+        </label>
+        <label>
+          <input type="radio" name="tileType" value="DIAGONAL" />
+          Diagonal
+        </label>
+      </fieldset>
+    </header>
+
     <section class="chart-container"></section>
     <script type="module" src="src/ts/main.ts"></script>
   </body>

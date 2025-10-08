@@ -1,6 +1,6 @@
 export enum TileType {
-  QuarterCircle = 'QUARTER_CIRCLE',
   Triangle = 'TRIANGLE',
+  QuarterCircle = 'QUARTER_CIRCLE',
   SCurve = 'S_CURVE',
   Diagonal = 'DIAGONAL',
 }
