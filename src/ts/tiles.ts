@@ -52,9 +52,9 @@ function drawQuarterCircleTile(d: LayoutDatum): string {
         `;
     case TileOrientation.BottomRight:
       return `
-            M${w - r},${h} A${r},${r} 0 0,1 ${w},${h - r}
-            M${w},${r} A${r},${r} 0 0,1 ${w - r},0
-        `;
+        M0,${h - r} A${r},${r} 0 0,1 ${r},${h}
+        M${r},0 A${r},${r} 0 0,1 ${w},${h - r}
+      `;
     default:
       throw new Error(`Unsupported orientation: ${orientation}`);
   }
