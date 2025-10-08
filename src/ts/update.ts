@@ -25,6 +25,12 @@ export function update(w: number, h: number) {
     .attr('transform', (d) => `translate(${d.x}, ${d.y})`);
 
   tiles
+    .append('rect')
+    .attr('width', (d) => d.w)
+    .attr('height', (d) => d.h)
+    .attr('fill', 'transparent');
+
+  tiles
     .selectAll('path')
     .data((d) => [d])
     .join('path')
@@ -35,7 +41,7 @@ export function update(w: number, h: number) {
     tiles.selectAll('path').attr(attr, value);
   });
 
-  tiles.on('click', function (_, d) {
+  tiles.on('mouseenter', function (_, d) {
     const orientations = Object.values(TileOrientation) as TileOrientation[];
     const currentIndex = orientations.indexOf(d.orientation);
     const nextIndex = (currentIndex + 1) % orientations.length;
