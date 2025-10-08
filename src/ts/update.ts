@@ -6,12 +6,13 @@ import { TileOrientation } from './types';
 
 export function update(w: number, h: number) {
   const { tileType } = chartConfig;
+
   const layoutData = layout(w, h);
 
   applyLayoutAlgorithm(layoutData, w, h);
 
   const svg = d3
-    .select('body')
+    .select('.chart-container')
     .selectAll('svg')
     .data([null])
     .join('svg')
