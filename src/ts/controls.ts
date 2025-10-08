@@ -7,7 +7,10 @@ export function initControls() {
     '.tile-type-selector'
   ) as HTMLInputElement;
   const elLayoutAlgoInput = document.querySelector(
-    '.tile-type-selector'
+    '.layout-algorythm-selector'
+  ) as HTMLInputElement;
+  const elTileSizeInput = document.querySelector(
+    '.tile-size-selector'
   ) as HTMLInputElement;
 
   elTileTypeInput.addEventListener('change', (event) => {
@@ -21,6 +24,13 @@ export function initControls() {
     const { value } = event.target as HTMLInputElement;
 
     setChartConfig('layoutAlgorithm', value as TileLayoutAlgorithm);
+    render();
+  });
+
+  elTileSizeInput.addEventListener('change', (event) => {
+    const { value } = event.target as HTMLInputElement;
+
+    setChartConfig('tileSize', Number(value));
     render();
   });
 }

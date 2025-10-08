@@ -6,11 +6,13 @@ type ChartConfig = {
   layoutAlgorithm: TileLayoutAlgorithm;
 };
 
-export const chartConfig: ChartConfig = {
+const DEFAULT_CONFIG = {
   tileSize: 40,
   tileType: TileType.Triangle,
-  layoutAlgorithm: TileLayoutAlgorithm.Radial,
-};
+  layoutAlgorithm: TileLayoutAlgorithm.None,
+} as const satisfies ChartConfig;
+
+export const chartConfig: ChartConfig = DEFAULT_CONFIG;
 
 export function setChartConfig<K extends keyof ChartConfig>(
   key: K,

@@ -25,7 +25,7 @@ fieldset {
 
 .main-header {
   height: var(--main-header-height);
-  padding-inline: 4px;
+  padding-inline: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
