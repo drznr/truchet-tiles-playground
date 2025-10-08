@@ -124,7 +124,7 @@ export function getTileTypeAttrs(type: TileType) {
       return {
         stroke: chartConfig.colors.stroke,
         'stroke-width': '1',
-        fill: chartConfig.colors.fill,
+        fill: 'transparent',
       };
 
     default:
