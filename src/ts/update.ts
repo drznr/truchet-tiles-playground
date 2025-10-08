@@ -1,9 +1,10 @@
 import * as d3 from 'd3';
 import { layout } from './layout';
-import { drawTile } from './tiles';
-import { TileType } from './types';
+import { drawTile, TILES_ATTRS } from './tiles';
+import { chartConfig } from './config';
 
 export function update(w: number, h: number) {
+  const { tileType } = chartConfig;
   const layoutData = layout(w, h);
 
   const svg = d3
@@ -26,9 +27,10 @@ export function update(w: number, h: number) {
     .selectAll('path')
     .data((d) => [d])
     .join('path')
-    .attr('d', (d) => drawTile(TileType.QuarterCircle, d))
-    .attr('fill', 'none')
-    .attr('stroke', '#333')
-    .attr('stroke-width', 2)
-    .attr('vector-effect', 'non-scaling-stroke');
+    .attr('d', (d) => drawTile(tileType, d));
+
+  const TileTypeAttrs = Object.entries(TILES_ATTRS[tileType]);
+  TileTypeAttrs.forEach(([attr, value]) => {
+    tiles.selectAll('path').attr(attr, value);
+  });
 }

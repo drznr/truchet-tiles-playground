@@ -59,3 +59,16 @@ function drawQuarterCircleTile(d: LayoutDatum): string {
       throw new Error(`Unsupported orientation: ${orientation}`);
   }
 }
+
+export const TILES_ATTRS: Record<TileType, { [key: string]: string }> = {
+  [TileType.QuarterCircle]: {
+    fill: 'none',
+    stroke: '#333',
+    'stroke-width': '2',
+    'vector-effect': 'non-scaling-stroke',
+  },
+  [TileType.Triangle]: {
+    fill: '#333',
+    stroke: 'none',
+  },
+} as const;
