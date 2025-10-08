@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 import { layout } from './layout';
 import { drawTile, TILES_ATTRS } from './tiles';
 import { chartConfig } from './config';
+import { TileOrientation } from './types';
 
 export function update(w: number, h: number) {
   const { tileType } = chartConfig;
@@ -32,5 +33,14 @@ export function update(w: number, h: number) {
   const TileTypeAttrs = Object.entries(TILES_ATTRS[tileType]);
   TileTypeAttrs.forEach(([attr, value]) => {
     tiles.selectAll('path').attr(attr, value);
+  });
+
+  tiles.on('click', function (_, d) {
+    const orientations = Object.values(TileOrientation) as TileOrientation[];
+    const currentIndex = orientations.indexOf(d.orientation);
+    const nextIndex = (currentIndex + 1) % orientations.length;
+    d.orientation = orientations[nextIndex];
+
+    d3.select(this).select('path').attr('d', drawTile(tileType, d));
   });
 }

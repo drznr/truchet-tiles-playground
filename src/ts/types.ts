@@ -4,8 +4,8 @@ export enum TileType {
 }
 
 export enum TileOrientation {
-  TopLeft = 0,
-  TopRight = 1,
-  BottomRight = 2,
-  BottomLeft = 3,
+  TopLeft = 'TOP_LEFT',
+  TopRight = 'TOP_RIGHT',
+  BottomRight = 'BOTTOM_RIGHT',
+  BottomLeft = 'BOTTOM_LEFT',
 }

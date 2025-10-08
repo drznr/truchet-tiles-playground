@@ -18,11 +18,11 @@ function drawTriangleTile(d: LayoutDatum): string {
 
   switch (orientation) {
     case TileOrientation.TopLeft:
-      return `M0,0 L${w},${h} L0,${h} Z`;
-    case TileOrientation.TopRight:
-      return `M${w},0 L0,${h} L${w},${h} Z`;
-    case TileOrientation.BottomLeft:
       return `M0,${h} L${w},0 L0,0 Z`;
+    case TileOrientation.TopRight:
+      return `M0,0 L${w},${h} L0,${h} Z`;
+    case TileOrientation.BottomLeft:
+      return `M0,0 L${w},${h} L${w},0 Z`;
     case TileOrientation.BottomRight:
       return `M${w},${h} L${w},0 L0,${h} Z`;
     default:
