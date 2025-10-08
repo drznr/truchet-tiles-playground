@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { layout } from './layout';
+import { applyLayoutAlgorithm, layout } from './layout';
 import { drawTile, TILES_ATTRS } from './tiles';
 import { chartConfig } from './config';
 import { TileOrientation } from './types';
@@ -7,6 +7,8 @@ import { TileOrientation } from './types';
 export function update(w: number, h: number) {
   const { tileType } = chartConfig;
   const layoutData = layout(w, h);
+
+  applyLayoutAlgorithm(layoutData, w, h);
 
   const svg = d3
     .select('body')
@@ -36,6 +38,7 @@ export function update(w: number, h: number) {
     .join('path')
     .attr('d', (d) => drawTile(tileType, d));
 
+  // Custom attributes per tile type
   const TileTypeAttrs = Object.entries(TILES_ATTRS[tileType]);
   TileTypeAttrs.forEach(([attr, value]) => {
     tiles.selectAll('path').attr(attr, value);

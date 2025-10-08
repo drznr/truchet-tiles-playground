@@ -9,3 +9,10 @@ export enum TileOrientation {
   BottomRight = 'BOTTOM_RIGHT',
   BottomLeft = 'BOTTOM_LEFT',
 }
+
+export enum TileLayoutAlgorithm {
+  None = 'NONE',
+  Random = 'RANDOM',
+  Radial = 'RADIAL',
+  Wave = 'WAVE',
+}

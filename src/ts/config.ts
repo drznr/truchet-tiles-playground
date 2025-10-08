@@ -1,6 +1,13 @@
-import { TileType } from './types';
+import { TileLayoutAlgorithm, TileType } from './types';
 
-export const chartConfig = {
+type ChartConfig = {
+  tileSize: number;
+  tileType: TileType;
+  layoutAlgorithm: TileLayoutAlgorithm;
+};
+
+export const chartConfig: ChartConfig = {
   tileSize: 40,
-  tileType: TileType.QuarterCircle,
-} as const;
+  tileType: TileType.Triangle,
+  layoutAlgorithm: TileLayoutAlgorithm.Radial,
+};
