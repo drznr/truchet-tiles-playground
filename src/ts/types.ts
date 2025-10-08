@@ -15,7 +15,7 @@ export enum TileOrientation {
 export enum TileLayoutAlgorithm {
   None = 'NONE',
   Random = 'RANDOM',
-  Radial = 'RADIAL',
+  QuadRotation = 'QUAD_ROTATION',
   Wave = 'WAVE',
-  Spiral = 'SPIRAL',
+  QuadReflection = 'QUAD_REFLECTION',
 }

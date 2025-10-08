@@ -44,7 +44,7 @@ export function applyLayoutAlgorithm(
     });
   }
 
-  if (layoutAlgorithm === TileLayoutAlgorithm.Radial) {
+  if (layoutAlgorithm === TileLayoutAlgorithm.QuadRotation) {
     layoutData.forEach((d) => {
       const dx = d.x + d.w / 2 - centerX;
       const dy = d.y + d.h / 2 - centerY;
@@ -69,7 +69,7 @@ export function applyLayoutAlgorithm(
     });
   }
 
-  if (layoutAlgorithm === TileLayoutAlgorithm.Spiral) {
+  if (layoutAlgorithm === TileLayoutAlgorithm.QuadReflection) {
     layoutData.forEach((d) => {
       const dx = d.x + d.w / 2 - centerX;
       const dy = d.y + d.h / 2 - centerY;
