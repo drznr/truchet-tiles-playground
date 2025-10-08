@@ -1,7 +1,6 @@
 import { update } from './update';
 
-const container = document.querySelector('.chart-container');
-if (!container) throw new Error('Container not found');
+const container = document.querySelector('.chart-container')!;
 
 let rafId: number | null = null;
 
@@ -12,7 +11,7 @@ function render() {
   if (rafId) cancelAnimationFrame(rafId);
 
   rafId = requestAnimationFrame(() => {
-    const { width, height } = container!.getBoundingClientRect();
+    const { width, height } = container.getBoundingClientRect();
     update(width, height);
   });
 }
