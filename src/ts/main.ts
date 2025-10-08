@@ -1,12 +1,18 @@
 import { update } from './update';
 
+const container = document.querySelector('.chart-container');
+if (!container) throw new Error('Container not found');
+
+let rafId: number | null = null;
+
+window.addEventListener('load', render);
+window.addEventListener('resize', render);
+
 function render() {
-  const { width, height } = document.body.getBoundingClientRect();
+  if (rafId) cancelAnimationFrame(rafId);
 
-  update(width, height);
+  rafId = requestAnimationFrame(() => {
+    const { width, height } = container!.getBoundingClientRect();
+    update(width, height);
+  });
 }
-
-render();
-
-const observer = new ResizeObserver(render);
-observer.observe(document.body);
