@@ -1,4 +1,4 @@
-import { setChartConfig } from './config';
+import { chartConfig, setChartConfig } from './config';
 import { render } from './main';
 import type { TileLayoutAlgorithm, TileType } from './types';
 
@@ -11,6 +11,9 @@ export function initControls() {
   ) as HTMLInputElement;
   const elTileSizeInput = document.querySelector(
     '.tile-size-selector'
+  ) as HTMLInputElement;
+  const elColorsInput = document.querySelector(
+    '.colors-selector'
   ) as HTMLInputElement;
 
   elTileTypeInput.addEventListener('change', (event) => {
@@ -31,6 +34,13 @@ export function initControls() {
     const { value } = event.target as HTMLInputElement;
 
     setChartConfig('tileSize', Number(value));
+    render();
+  });
+
+  elColorsInput.addEventListener('change', (event) => {
+    const { name, value } = event.target as HTMLInputElement;
+
+    setChartConfig('colors', { ...chartConfig.colors, [name]: value });
     render();
   });
 }

@@ -1,3 +1,4 @@
+import { chartConfig } from './config';
 import type { LayoutDatum } from './layout';
 import { TileOrientation, TileType } from './types';
 
@@ -102,23 +103,31 @@ function drawDiagonalTile(d: LayoutDatum): string {
   }
 }
 
-const TILE_DEFAULT_ATTRS = {
-  fill: 'none',
-  stroke: '#333',
-  'stroke-width': '2',
-  'vector-effect': 'non-scaling-stroke',
-};
+export function getTileTypeAttrs(type: TileType) {
+  switch (type) {
+    case TileType.Triangle:
+      return {
+        fill: chartConfig.colors.fill,
+        stroke: chartConfig.colors.stroke,
+      };
 
-export const TILES_ATTRS: Record<TileType, { [key: string]: string }> = {
-  [TileType.SCurve]: TILE_DEFAULT_ATTRS,
-  [TileType.QuarterCircle]: TILE_DEFAULT_ATTRS,
-  [TileType.Triangle]: {
-    fill: '#333',
-    stroke: 'none',
-  },
-  [TileType.Diagonal]: {
-    stroke: '#333',
-    'stroke-width': '1',
-    fill: 'transparent',
-  },
-} as const;
+    case TileType.SCurve:
+    case TileType.QuarterCircle:
+      return {
+        fill: chartConfig.colors.fill,
+        stroke: chartConfig.colors.stroke,
+        'stroke-width': '2',
+        'vector-effect': 'non-scaling-stroke',
+      };
+
+    case TileType.Diagonal:
+      return {
+        stroke: chartConfig.colors.stroke,
+        'stroke-width': '1',
+        fill: chartConfig.colors.fill,
+      };
+
+    default:
+      throw new Error(`Unsupported tile type: ${type}`);
+  }
+}

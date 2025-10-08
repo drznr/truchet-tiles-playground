@@ -23,7 +23,8 @@ fieldset {
 
 .tile-type-selector,
 .layout-algorythm-selector,
-.tile-size-selector {
+.tile-size-selector,
+.colors-selector {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -34,6 +35,7 @@ fieldset {
     gap: 4px;
     font-size: 0.875rem;
     font-weight: 500;
+    white-space: nowrap;
   }
 }
 
@@ -46,6 +48,7 @@ fieldset {
   gap: 16px;
   background-color: #333;
   color: #e2e2e2;
+  overflow-x: auto;
 }
 
 .chart-container {

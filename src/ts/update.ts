@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { applyLayoutAlgorithm, layout } from './layout';
-import { drawTile, TILES_ATTRS } from './tiles';
+import { drawTile, getTileTypeAttrs } from './tiles';
 import { chartConfig } from './config';
 import { TileOrientation } from './types';
 
@@ -43,7 +43,7 @@ export function update(width: number, height: number) {
     .attr('d', (d) => drawTile(tileType, d));
 
   // Custom attributes per tile type
-  const TileTypeAttrs = Object.entries(TILES_ATTRS[tileType]);
+  const TileTypeAttrs = Object.entries(getTileTypeAttrs(tileType));
   TileTypeAttrs.forEach(([attr, value]) => {
     tiles.selectAll('path').attr(attr, value);
   });
