@@ -10,6 +10,10 @@ export function drawTile(type: TileType, d: LayoutDatum): string {
     return drawTriangleTile(d);
   }
 
+  if (type === TileType.SCurve) {
+    return drawSCurveTile(d);
+  }
+
   throw new Error(`Unsupported tile type: ${type}`);
 }
 
@@ -60,13 +64,33 @@ function drawQuarterCircleTile(d: LayoutDatum): string {
   }
 }
 
+function drawSCurveTile(d: LayoutDatum): string {
+  const { w, h, orientation } = d;
+
+  switch (orientation) {
+    case TileOrientation.TopLeft:
+      return `M0,0 C0,${h / 2} ${w / 2},${h} ${w},${h}`;
+    case TileOrientation.TopRight:
+      return `M${w},0 C${w},${h / 2} ${w / 2},${h} 0,${h}`;
+    case TileOrientation.BottomLeft:
+      return `M0,${h} C0,${h / 2} ${w / 2},0 ${w},0`;
+    case TileOrientation.BottomRight:
+      return `M${w},${h} C${w},${h / 2} ${w / 2},0 0,0`;
+    default:
+      throw new Error(`Unsupported orientation: ${orientation}`);
+  }
+}
+
+const TILE_DEFAULT_ATTRS = {
+  fill: 'none',
+  stroke: '#333',
+  'stroke-width': '2',
+  'vector-effect': 'non-scaling-stroke',
+};
+
 export const TILES_ATTRS: Record<TileType, { [key: string]: string }> = {
-  [TileType.QuarterCircle]: {
-    fill: 'none',
-    stroke: '#333',
-    'stroke-width': '2',
-    'vector-effect': 'non-scaling-stroke',
-  },
+  [TileType.SCurve]: TILE_DEFAULT_ATTRS,
+  [TileType.QuarterCircle]: TILE_DEFAULT_ATTRS,
   [TileType.Triangle]: {
     fill: '#333',
     stroke: 'none',
