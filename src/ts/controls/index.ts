@@ -14,12 +14,10 @@ export function initControls() {
     .style('align-items', 'center')
     .style('gap', '12px');
 
-  fieldsets
-    .filter((_, i) => i < controlsData.length - 1)
-    .each((_, i, nodes) => {
-      const fieldset = nodes[i] as HTMLFieldSetElement;
-      fieldset.after('|');
-    });
+  fieldsets.each((_, i, nodes) => {
+    const fieldset = nodes[i] as HTMLFieldSetElement;
+    fieldset.after('|');
+  });
 
   const labels = fieldsets
     .selectAll('label')
@@ -36,6 +34,7 @@ export function initControls() {
 
     label
       .append('input')
+      .style('block-size', parent.key === 'colors' ? '22px' : 'unset')
       .attr('type', parent.type)
       .attr('name', parent.key)
       .attr('value', d.value)
@@ -44,6 +43,14 @@ export function initControls() {
 
     label.append('span').text(d.label);
   });
+
+  header
+    .append('button')
+    .style('line-height', '1')
+    .style('padding', '1px 8px')
+    .style('background-color', '#53DD6C')
+    .text('Export')
+    .on('click', handleExport);
 }
 
 function handleChange(
@@ -59,4 +66,22 @@ function handleChange(
   } else setChartConfig(key, option.value as ChartConfig[typeof key]);
 
   render();
+}
+
+function handleExport() {
+  const svg = select('svg').node() as SVGSVGElement;
+
+  const serializer = new XMLSerializer();
+  const svgString = serializer.serializeToString(svg);
+
+  const blob = new Blob([svgString], {
+    type: 'image/svg+xml;charset=utf-8',
+  });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'tiles.svg';
+  a.click();
+  URL.revokeObjectURL(url);
 }
