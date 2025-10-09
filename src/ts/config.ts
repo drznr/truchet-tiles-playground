@@ -1,7 +1,7 @@
 import { TileLayoutAlgorithm, TileType } from './types';
 
 type ChartConfig = {
-  tileSize: number;
+  tileSize: 20 | 40 | 80;
   tileType: TileType;
   layoutAlgorithm: TileLayoutAlgorithm;
   colors: {
