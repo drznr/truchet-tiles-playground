@@ -21,6 +21,10 @@ fieldset {
   padding: 0;
 }
 
+input[type='radio'] {
+  margin: 0;
+}
+
 input[type='color'] {
   padding: 0;
   border: none;
