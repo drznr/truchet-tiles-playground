@@ -37,3 +37,17 @@ fieldset {
 .chart-container {
   height: calc(100% - var(--main-header-height));
 }
+@media print {
+  @page {
+    margin: 0;
+  }
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  .main-header {
+    visibility: hidden;
+  }
+}
