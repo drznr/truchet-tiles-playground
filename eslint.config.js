@@ -6,6 +6,10 @@ import importPlugin from 'eslint-plugin-import';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+  {
+    ignores: ['node_modules/**', 'dist/**', 'build/**', 'public/**', 'docs/**'],
+  },
+
   { files: ['**/*.{js,mjs,cjs,ts}'] },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
@@ -48,9 +52,5 @@ export default [
         },
       },
     },
-  },
-
-  {
-    ignores: ['node_modules/**', 'dist/**', 'build/**', 'public/**', 'docs/**'],
   },
 ];

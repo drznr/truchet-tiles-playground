@@ -29,7 +29,7 @@
     "vite": "^7.0.4"
   },
   "lint-staged": {
-    "*.{js,ts}": "npm run lint",
+    "src/**/*.{js,ts}": "npm run lint",
     "*.{js,ts,json,css,html,md}": "npm run format"
   }
 }
