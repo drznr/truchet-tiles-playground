@@ -2,7 +2,6 @@ import { chartConfig, type ChartConfig } from '../config';
 import { TileLayoutAlgorithm, TileType } from '../types';
 
 export type ControlConfig = {
-  class: string;
   key: keyof ChartConfig;
   type: 'radio' | 'color';
   options: {
@@ -15,7 +14,6 @@ export type ControlConfig = {
 
 export const controlsData: ControlConfig[] = [
   {
-    class: 'tile-type-selector',
     key: 'tileType',
     type: 'radio',
     options: [
@@ -42,7 +40,6 @@ export const controlsData: ControlConfig[] = [
     ],
   },
   {
-    class: 'layout-algorythm-selector',
     key: 'layoutAlgorithm',
     type: 'radio',
     options: [
@@ -76,7 +73,6 @@ export const controlsData: ControlConfig[] = [
     ],
   },
   {
-    class: 'tile-size-selector',
     key: 'tileSize',
     type: 'radio',
     options: [
@@ -86,7 +82,6 @@ export const controlsData: ControlConfig[] = [
     ],
   },
   {
-    class: 'colors-selector',
     type: 'color',
     key: 'colors',
     options: [

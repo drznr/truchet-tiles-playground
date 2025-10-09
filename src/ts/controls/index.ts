@@ -10,7 +10,6 @@ export function initControls() {
     .selectAll('fieldset')
     .data(controlsData)
     .join('fieldset')
-    .attr('class', (d) => d.class)
     .style('display', 'flex')
     .style('align-items', 'center')
     .style('gap', '12px');
