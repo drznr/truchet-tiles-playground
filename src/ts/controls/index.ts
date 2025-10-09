@@ -15,6 +15,13 @@ export function initControls() {
     .style('align-items', 'center')
     .style('gap', '12px');
 
+  fieldsets
+    .filter((_, i) => i < controlsData.length - 1)
+    .each((_, i, nodes) => {
+      const fieldset = nodes[i] as HTMLFieldSetElement;
+      fieldset.after('|');
+    });
+
   const labels = fieldsets
     .selectAll('label')
     .data((d) => d.options.map((opt) => ({ ...opt, parent: d })))
