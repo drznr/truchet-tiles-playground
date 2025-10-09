@@ -1,6 +1,6 @@
 import { TileLayoutAlgorithm, TileType } from './types';
 
-type ChartConfig = {
+export type ChartConfig = {
   tileSize: 20 | 40 | 80;
   tileType: TileType;
   layoutAlgorithm: TileLayoutAlgorithm;
