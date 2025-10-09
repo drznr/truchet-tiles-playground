@@ -60,6 +60,7 @@ export function update(width: number, height: number) {
     path
       .transition()
       .duration(tileType === TileType.QuarterCircle ? 0 : 300)
+      .ease(d3.easeCubicInOut)
       .attrTween('d', () => {
         const previousD = path.attr('d');
         const newD = drawTile(tileType, d);
