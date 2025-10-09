@@ -8,16 +8,16 @@ let rafId: number | null = null;
 
 const debouncedRender = debounce(render, 25);
 
-window.addEventListener('load', () => {
-  const { width, height } = container.getBoundingClientRect();
-  render(width, height);
-  initControls();
-});
-
 const resizeObserver = new ResizeObserver((entries) => {
   const [entry] = entries;
   const { width, height } = entry.contentRect;
   debouncedRender(width, height);
+});
+
+window.addEventListener('load', () => {
+  const { width, height } = container.getBoundingClientRect();
+  render(width, height);
+  initControls();
 });
 
 resizeObserver.observe(container);
