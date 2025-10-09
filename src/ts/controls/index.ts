@@ -1,5 +1,5 @@
 import { select } from 'd3';
-import { setChartConfig, chartConfig, type ChartConfig } from '../config';
+import { setChartConfig, type ChartConfig } from '../config';
 import { render } from '../main';
 import { controlsData, type ControlConfig } from './data';
 
@@ -46,10 +46,10 @@ function handleChange(
   inputValue: string
 ) {
   if (key === 'colors') {
-    setChartConfig(key, {
-      ...chartConfig.colors,
+    setChartConfig(key, (prevColors) => ({
+      ...prevColors,
       [option.name!]: inputValue,
-    });
+    }));
   } else setChartConfig(key, option.value as ChartConfig[typeof key]);
 
   render();

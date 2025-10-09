@@ -22,7 +22,12 @@ export const chartConfig: ChartConfig = DEFAULT_CONFIG;
 
 export function setChartConfig<K extends keyof ChartConfig>(
   key: K,
-  value: ChartConfig[K]
+  updater: ChartConfig[K] | ((prev: ChartConfig[K]) => ChartConfig[K])
 ) {
+  const value =
+    typeof updater === 'function'
+      ? (updater as (prev: ChartConfig[K]) => ChartConfig[K])(chartConfig[key])
+      : updater;
+
   chartConfig[key] = value;
 }
