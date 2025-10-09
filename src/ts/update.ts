@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import { applyLayoutAlgorithm, layout } from './layout';
 import { drawTile, getTileTypeAttrs } from './tiles';
 import { chartConfig } from './config';
-import { TileOrientation } from './types';
+import { TileOrientation, TileType } from './types';
 
 export function update(width: number, height: number) {
   const { tileType } = chartConfig;
@@ -55,6 +55,16 @@ export function update(width: number, height: number) {
     const nextIndex = (currentIndex + 1) % orientations.length;
     d.orientation = orientations[nextIndex];
 
-    d3.select(this).select('path').attr('d', drawTile(tileType, d));
+    const path = d3.select(this).select('path');
+
+    path
+      .transition()
+      .duration(tileType === TileType.QuarterCircle ? 0 : 300)
+      .attrTween('d', () => {
+        const previousD = path.attr('d');
+        const newD = drawTile(tileType, d);
+
+        return d3.interpolateString(previousD, newD);
+      });
   });
 }
