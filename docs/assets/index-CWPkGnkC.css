@@ -1,5 +1,5 @@
 :root {
-  --main-header-height: 32px;
+  --main-header-height: 36px;
 }
 *,
 *:before,
@@ -19,6 +19,20 @@ fieldset {
   border: none;
   margin: 0;
   padding: 0;
+}
+input[type='color'] {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}
+button {
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  border: none;
+  cursor: pointer;
 }
 .main-header {
   height: var(--main-header-height);
