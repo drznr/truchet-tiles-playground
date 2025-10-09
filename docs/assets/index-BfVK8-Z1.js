@@ -2415,7 +2415,7 @@ function Hi() {
           { parent: s } = n;
         (o
           .append('input')
-          .style('block-size', s.key === 'colors' ? '22px' : 'unset')
+          .style('block-size', s.key === 'colors' ? '20px' : 'auto')
           .attr('type', s.type)
           .attr('name', s.key)
           .attr('value', n.value)

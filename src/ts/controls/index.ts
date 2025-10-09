@@ -34,7 +34,7 @@ export function initControls() {
 
     label
       .append('input')
-      .style('block-size', parent.key === 'colors' ? '22px' : 'unset')
+      .style('block-size', parent.key === 'colors' ? '20px' : 'auto')
       .attr('type', parent.type)
       .attr('name', parent.key)
       .attr('value', d.value)
