@@ -25,11 +25,11 @@ export function update(width: number, height: number) {
     .style('background-color', chartConfig.colors.background);
 
   const tiles = svg
-    .selectAll('g.tile')
+    .selectAll('g')
     .data(layoutData)
     .join('g')
-    .attr('class', 'tile')
-    .attr('transform', (d) => `translate(${d.x}, ${d.y})`);
+    .attr('transform', (d) => `translate(${d.x}, ${d.y})`)
+    .style('cursor', 'pointer');
 
   tiles
     .append('rect')
