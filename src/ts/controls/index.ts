@@ -10,13 +10,19 @@ export function initControls() {
     .selectAll('fieldset')
     .data(controlsData)
     .join('fieldset')
-    .attr('class', (d) => d.class);
+    .attr('class', (d) => d.class)
+    .style('display', 'flex')
+    .style('align-items', 'center')
+    .style('gap', '12px');
 
   const labels = fieldsets
     .selectAll('label')
     .data((d) => d.options.map((opt) => ({ ...opt, parent: d })))
     .join('label')
-    .style('cursor', 'pointer');
+    .style('cursor', 'pointer')
+    .style('display', 'flex')
+    .style('align-items', 'center')
+    .style('gap', '4px');
 
   labels.each((d, i, nodes) => {
     const label = select(nodes[i]);
