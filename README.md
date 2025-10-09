@@ -26,6 +26,7 @@ Try the interactive Truchet Tiles Playground here:
   - Click tiles to rotate orientation.
   - Change tile type dynamically via radio buttons.
   - Change tiles and background colors
+  - **Export Chart** — download the current chart as an SVG file with a single click.
 
 ## Installation
 
